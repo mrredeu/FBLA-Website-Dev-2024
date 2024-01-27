@@ -1,0 +1,79 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #4f4e4e;
+}
+
+header {
+    background: #333;
+    color: #fff;
+    padding: 1em 0;
+    text-align: center;
+    border-radius: 3px;
+}
+
+/* Style for the logo within the header */
+header img {
+    vertical-align: middle; /* Aligns the image vertically with the text */
+    height: 150px; /* Example fixed height */
+    width: auto; /* Maintain aspect ratio */
+    background: transparent; /* If you want the image background to be transparent */
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 10px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+section {
+    padding: 20px;
+    margin-top: 20px;
+}
+
+footer {
+    text-align: center;
+    padding: 10px 0;
+    background: #333;
+    color: #fff;
+}
+
+.products-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.product-box {
+    width: 300px;
+    margin: 10px;
+    padding: 20px;
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.product-box h3 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.product-box p {
+    color: #666;
+    line-height: 1.4;
+}
+
+.price-range {
+    font-weight: bold;
+    color: #0056b3;
+}
