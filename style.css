@@ -4,35 +4,44 @@ body {
     background-color: #4f4e4e;
 }
 
-header {
-    background: #333;
-    color: #fff;
-    padding: 1em 0;
-    text-align: center;
-    border-radius: 3px;
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    background-color: #333;
+    border-radius: 4px;
 }
 
-/* Style for the logo within the header */
-header img {
+header h1 {
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+
+header h1 img {
     vertical-align: middle; /* Aligns the image vertically with the text */
-    height: 150px; /* Example fixed height */
-    width: auto; /* Maintain aspect ratio */
+    height: 50px; /* Adjust as needed */
+    margin-right: 10px;
     background: transparent; /* If you want the image background to be transparent */
 }
 
 nav ul {
     list-style: none;
+    display: flex;
     padding: 0;
+    margin: 0;
 }
 
 nav ul li {
-    display: inline;
     margin: 0 10px;
 }
 
 nav ul li a {
     color: #fff;
     text-decoration: none;
+    padding: 5px 10px;
+    display: block;
 }
 
 section {
