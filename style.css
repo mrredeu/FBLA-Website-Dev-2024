@@ -1,27 +1,82 @@
+/* In your style.css */
+body, html {
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+}
+
+.product-container {
+    width: 100%;
+    display: flex;
+    margin-bottom: 50px;
+    align-items: flex-start;
+}
+
+.product-image {
+    width: 100%;
+    height: auto;
+    transition: transform 0.5s ease-in-out;
+}
+
+.product-description {
+    /* Initial state when the description is not visible */
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    position: sticky;
+    top: 10%; /* Adjust as needed */
+}
+
+.product-description.visible {
+    /* State when the description is visible */
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.background-image {
+    background-image: url('path_to_your_uploaded_image/logo.png');
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+}
+
+.product-row {
+/* styles for your product row */
+    opacity: 0;
+    transform: translateY(100px);
+    transition: all 0.3s ease-out;
+}
+
+.product-row.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
-    background-color: #4f4e4e;
+    background-color: #333;
+    margin: 0px;
+    color: #fff;
 }
 
 .header-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 20px;
-    background-color: #333;
-    border-radius: 4px;
+    border-radius: 4px 0px;
 }
 
 header h1 {
     margin: 0;
     display: flex;
     align-items: center;
+    font-size: 40px;
 }
 
 header h1 img {
     vertical-align: middle; /* Aligns the image vertically with the text */
-    height: 50px; /* Adjust as needed */
+    height: 100px; /* Adjust as needed */
     margin-right: 10px;
     background: transparent; /* If you want the image background to be transparent */
 }
@@ -35,6 +90,7 @@ nav ul {
 
 nav ul li {
     margin: 0 10px;
+    font-size: 1.75rem;
 }
 
 nav ul li a {
@@ -52,7 +108,6 @@ section {
 footer {
     text-align: center;
     padding: 10px 0;
-    background: #333;
     color: #fff;
 }
 
