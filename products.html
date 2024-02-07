@@ -104,13 +104,16 @@
             entries.forEach(entry => {
                 // Get the product description related to the image
                 const descriptionBox = entry.target.parentNode.querySelector('.product-description');
+                const imageBox = entry.target.parentNode.querySelector('.product-image');
 
                 if (entry.isIntersecting) {
                     // Add the 'visible' class when the product image is in view
                     descriptionBox.classList.add('visible');
+                    imageBox.classList.add('visible');
                 } else {
                     // Remove the 'visible' class when the product image is not in view
                     descriptionBox.classList.remove('visible');
+                    imageBox.classList.remove('visible');
                 }
             });
         }, options);

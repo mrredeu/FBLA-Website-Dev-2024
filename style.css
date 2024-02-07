@@ -28,26 +28,26 @@ html, body {
 .product-image {
     max-width: 50%; /* Limits the width of the image to half of the container */
     height: 25vw; /* Scales the height automatically to maintain aspect ratio */
+    opacity: 0;
     margin-left: auto;
     margin-right: auto;
-    transition: transform 0.5s ease-in-out;
+    transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
 .product-description {
     width: 50%; /* Limits the width of the text to half of the container */
     padding: 0 20px; /* Adds padding around the text */
-    /* Initial state when the description is not visible */
     opacity: 0;
-    transform: translateY(20px);
     transition: opacity 0.5s ease, transform 0.5s ease;
     position: sticky;
-    top: 10%; /* Adjust as needed */
 }
 
 .product-description.visible {
-    /* State when the description is visible */
     opacity: 1;
-    transform: translateY(0);
+}
+
+.product-image.visible {
+    opacity: 1;
 }
 
 .background-image {
