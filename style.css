@@ -77,7 +77,7 @@ table {
 
 th, td {
     text-align: center; /* Center-aligns text in cells */
-    border: 1px solid #ccc; /* Optional: adds a border to cells */
+    border: 1px solid #333; /* Optional: adds a border to cells */
 }
 
 .see-more-btn {
@@ -97,9 +97,9 @@ th, td {
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
-    background-color: #333;
+    background-color: #fff;
     margin: 0px;
-    color: #fff;
+    color: #333;
 }
 
 .header-content {
@@ -126,7 +126,7 @@ header h1 img {
 nav ul {
     list-style: none;
     display: flex;
-    padding: 0;
+    padding: 10px;
     margin: 0;
 }
 
@@ -136,10 +136,89 @@ nav ul li {
 }
 
 nav ul li a {
-    color: #fff;
+    color: #333;
     text-decoration: none;
     padding: 5px 10px;
     display: block;
+}
+
+/* Anchor position for dropdown */
+.dropdown {
+    position: relative;
+}
+
+/* Absolute positioning for dropdown content */
+.dropdown-content {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 500px; /* Adjust as needed */
+    column-count: 2;
+    column-gap: 20px; /* Space between columns */
+    height: auto; /* Adjust based on your list item's height to fit 3 items in the first column */
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2); /* Optional shadow */
+    overflow: hidden;
+    z-index: 1; /* Ensure dropdown is above other content */
+}
+
+/* Style for list items */
+.dropdown-content li {
+    width: 100%; /* Full width to spread across columns */
+    box-sizing: border-box; /* Include padding and border in element's size */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 0px;
+}
+
+
+/* Style the dropdown links */
+.dropdown-content a {
+    float: none;
+    color: #333;
+    font-size: 1.3rem;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    border-radius: 3px;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Add a background color to dropdown links on hover */
+.dropdown-content a:hover {
+    background-color: #ddd;
+    color: black;
+}
+/* Dropdown styling */
+.dropdown {
+    position: relative; /* Establishes a positioning context for dropdown content */
+}
+
+/* Arrow styling */
+.arrow {
+    display: inline-block;
+    transition: transform 0.3s; /* Smooth transition for arrow flip */
+}
+
+/* Dropdown content styling */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    /* Additional styling for dropdown menu */
+}
+
+/* Show dropdown content on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Rotate arrow up when hovering over the dropdown */
+.dropdown:hover .arrow {
+    transform: rotate(180deg); /* Rotates the arrow to point up */
 }
 
 section {
@@ -150,7 +229,7 @@ section {
 footer {
     text-align: center;
     padding: 10px 0;
-    color: #fff;
+    color: #333;
 }
 
 .products-container {
