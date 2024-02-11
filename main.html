@@ -9,17 +9,29 @@
     <body>
         <header>
             <div class="header-content">
-                <h1><img src="logo.png" alt="NexaPulse Logo" />NexaPulse</h1>
+                <h1>
+                    <img src="logo.png" alt="NexaPulse Logo" />
+                    NexaPulse
+                </h1>
                 <nav>
                     <ul>
                         <li><a href="main.html">What Is NexaPulse?</a></li>
-                        <li><a href="products.html">Our Products</a></li>
+                        <li class="dropdown">
+                            <a href="products.html">Our Products <span class="arrow down">&#9662;</span></a>
+                            <ul class="dropdown-content">
+                                <li><a href="insight-analytics.html">Insight Analytics</a></li>
+                                <li><a href="crm-Integrations.html">CRM Integration</a></li>
+                                <li><a href="cloud-platform.html">Cloud Platform</a></li>
+                                <li><a href="workflow-automation.html">Worflow Automation</a></li>
+                                <li><a href="ecommerce-Integration.html">Ecommerce Integration</a></li>
+                                <li><a href="ai-chatbot.html">AI Chatbot Framework</a></li>
+                            </ul>
+                        </li>
                         <li><a href="openings.html">Apply Now</a></li>
                     </ul>
                 </nav>
             </div>
-        </header>
-
+        </header> 
         <main>
             <section id="about-us">
                 <h2>What Is NexaPulse?</h2>
@@ -51,7 +63,5 @@
         <footer>
             <p>© 2024 NexaPulse Tech. All rights reserved.</p>
         </footer>
-
-        <script src="script.js"></script>
     </body>
 </html>
