@@ -105,44 +105,40 @@
                 </div>
             </section>
         </main>
-
         <footer>
-            <p>© 2024 NexaPulse Tech.</p>
+            <p>© 2024 NexaPulse Tech. All rights reserved.</p>
         </footer>
-
-        <script src="script.js"></script>
     </body>
-
     <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const options = {
-            root: null, // The viewport
-            rootMargin: '0px',
-            threshold: 0.5 // Trigger when 50% of the product image is visible
-        };
+        document.addEventListener('DOMContentLoaded', () => {
+            const options = {
+                root: null, // The viewport
+                rootMargin: '0px',
+                threshold: 0.5 // Trigger when 50% of the product image is visible
+            };
 
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                // Get the product description related to the image
-                const descriptionBox = entry.target.parentNode.querySelector('.product-description');
-                const imageBox = entry.target.parentNode.querySelector('.product-image');
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    // Get the product description related to the image
+                    const descriptionBox = entry.target.parentNode.querySelector('.product-description');
+                    const imageBox = entry.target.parentNode.querySelector('.product-image');
 
-                if (entry.isIntersecting) {
-                    // Add the 'visible' class when the product image is in view
-                    descriptionBox.classList.add('visible');
-                    imageBox.classList.add('visible');
-                } else {
-                    // Remove the 'visible' class when the product image is not in view
-                    descriptionBox.classList.remove('visible');
-                    imageBox.classList.remove('visible');
-                }
+                    if (entry.isIntersecting) {
+                        // Add the 'visible' class when the product image is in view
+                        descriptionBox.classList.add('visible');
+                        imageBox.classList.add('visible');
+                    } else {
+                        // Remove the 'visible' class when the product image is not in view
+                        descriptionBox.classList.remove('visible');
+                        imageBox.classList.remove('visible');
+                    }
+                });
+            }, options);
+
+            // Observe all product images
+            document.querySelectorAll('.product-container .product-image').forEach((img) => {
+                observer.observe(img);
             });
-        }, options);
-
-        // Observe all product images
-        document.querySelectorAll('.product-container .product-image').forEach((img) => {
-            observer.observe(img);
         });
-    });
     </script>    
 </html>

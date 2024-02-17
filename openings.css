@@ -1,0 +1,64 @@
+.jobs-container {
+    margin-top: 9rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around; /* Or any other alignment you prefer */
+    gap: 20px; /* Adjust the gap between boxes as needed */
+}
+
+.job-box {
+    width: calc(33.333% - 20px); /* Adjust width as needed, subtracting the gap */
+    margin-bottom: 20px; /* Adjust based on your layout */
+    padding: 15px; /* Provides space inside the box */
+    border: 1px solid #ddd; /* Example border */
+    border-radius: 8px; /* Rounded corners */
+    background-color: #f9f9f9; /* Background color */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Adds depth */
+}
+
+.job-box ul {
+    list-style: inside square; /* Adjust list-style as needed */
+    padding-left: 20px;
+}
+
+.job-box li {
+    margin-bottom: 5px; /* Adds space between list items */
+}
+
+.job-box h2 {
+    margin: 0;
+    color: #333;
+}
+
+.job-box p {
+    color: #666;
+    font-size: 0.9rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Number of lines after which to truncate */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.job-box p, .job-box ul {
+    max-height: 150px; /* Example max height */
+    overflow: auto; /* Allows scrolling within the element */
+}
+
+.apply-btn {
+    display: inline-block; /* Change to inline-block for better control */
+    width: 15rem; /* Adjust width to fit content */
+    padding: 10px 20px; /* Keep your padding */
+    background-color: #007bff; /* Your button color */
+    color: #fff; /* Text color */
+    text-decoration: none; /* No underline */
+    border-radius: 5px; /* Rounded corners */
+    margin-top: 15px; /* Space from the content above */
+    text-align: center; /* Center the text inside the button */
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+    margin-left: 50%;
+    transform: translateX(-50%);
+}
+
+.apply-btn:hover {
+    background-color: #0056b3;
+}
