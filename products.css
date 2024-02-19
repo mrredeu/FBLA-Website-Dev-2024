@@ -40,13 +40,6 @@ chatbot image: https://nordvpn.com/wp-content/uploads/blog-featured-what-is-chat
     opacity: 1;
 }
 
-.background-image {
-    background-image: url('path_to_your_uploaded_image/logo.png');
-    background-attachment: fixed;
-    background-size: cover;
-    background-position: center;
-}
-
 .product-row {
 /* styles for your product row */
     opacity: 0;
@@ -60,20 +53,53 @@ chatbot image: https://nordvpn.com/wp-content/uploads/blog-featured-what-is-chat
 }
 
 table {
-    width: 100%; /* Adjust table width as needed */
-    border-collapse: separate; /* Ensures that spacing can be added between cells */
-    margin: 20px 0; /* Adds some space around the table */
+    width: 90%; /* Adjust table width as needed */
+    border-collapse: collapse; /* Ensures that spacing can be added between cells */
+    margin: 20px auto; /* Adds some space around the table */
 }
 
 th, td {
     text-align: center; /* Center-aligns text in cells */
     border: 1px solid #333; /* Optional: adds a border to cells */
+    padding: 1rem;
 }
+
+.plan-details h3{ 
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.power-check, .power-times {
+    position: relative; /* Establishes a positioning context for pseudo-elements */
+    text-align: center; /* Centers the text */
+    color: #ffffff;
+}
+
+.power-check::before, .power-times::before {
+    content: ''; /* Necessary for pseudo-elements */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centers the circle */
+    width: 2rem; /* Diameter of the circle */
+    height: 2rem; /* Diameter of the circle */
+    border-radius: 50%; /* Makes it circular */
+    z-index: -1; /* Places the circle behind the text */
+}
+
+.power-check::before {
+    background-color: #49a4de; /* Your desired color for check marks */
+}
+
+.power-times::before {
+    background-color: #333; /* Your desired color for times marks */
+}
+
 
 .see-more-btn {
     display: inline-block;
     padding: 10px 20px;
-    background-color: #007bff;
+    background-color: #49a4de;
     color: #ffffff;
     text-decoration: none;
     border-radius: 5px;
@@ -81,7 +107,7 @@ th, td {
 }
 
 .see-more-btn:hover {
-    background-color: #0056b3;
+    background-color: rgba(0, 71, 147, 0.724)
 }  
 
 .products-container {
@@ -120,4 +146,41 @@ section {
     font-size: 0.8rem;
     margin-top: 5px;
     color: #666;
+}
+
+.product-overview {
+    margin-left: 2rem;
+    display: flex;
+    justify-content: space-between; /* This will put space between the text and image */
+    align-items: center; /* This will vertically align them in the center */
+}
+
+.product-description-detailed {
+    flex: 1;
+    padding-right: 1rem; 
+}
+
+.product-description-detailed h2{
+    font-size: 3rem;
+    margin-bottom: 0px;
+}
+
+.product-description-detailed p{
+    margin-top: 0px;
+    font-size: 1.2rem;
+    margin-bottom: 0px;
+}
+
+.product-image-detailed {
+    flex: 0 0 50%;
+    max-width: 50%;
+    border-radius: 4px;
+}
+
+.product-details {
+    margin: 0 2rem;
+}
+
+.power-word {
+    color: #49a4de;
 }

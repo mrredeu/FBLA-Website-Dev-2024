@@ -14,12 +14,12 @@
     display: block;
     font-size: 2rem;
     font-weight: bold;
-    color: #007bff; /* Or any color that stands out */
+    color: #49a4de; /* Or any color that stands out */
 }
 
 .goal p {
     margin-top: 10px;
     color: #555;
     font-size: 1rem;
+    margin: 0 2rem;
 }
-
