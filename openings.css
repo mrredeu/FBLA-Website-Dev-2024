@@ -2,23 +2,23 @@
     margin-top: 9rem;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around; /* Or any other alignment you prefer */
-    gap: 20px; /* Adjust the gap between boxes as needed */
+    justify-content: space-evenly; /* Or any other alignment you prefer */
+    gap: 2rem; /* Adjust the gap between boxes as needed */
 }
 
 .job-box {
     width: calc(33.333% - 20px); /* Adjust width as needed, subtracting the gap */
-    margin-bottom: 20px; /* Adjust based on your layout */
-    padding: 15px; /* Provides space inside the box */
+    margin-bottom: 5rem; /* Adjust based on your layout */
+    padding: 1rem; /* Provides space inside the box */
     border: 1px solid #ddd; /* Example border */
-    border-radius: 8px; /* Rounded corners */
+    border-radius: .5rem; /* Rounded corners */
     background-color: #f9f9f9; /* Background color */
     box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Adds depth */
 }
 
 .job-box ul {
     list-style: inside square; /* Adjust list-style as needed */
-    padding-left: 20px;
+    padding-left: 1.5rem;
 }
 
 .job-box li {

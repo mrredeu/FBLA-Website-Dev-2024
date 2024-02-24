@@ -8,11 +8,11 @@ chatbot image: https://nordvpn.com/wp-content/uploads/blog-featured-what-is-chat
 */
 
 .product-container {
-    width: 100%;
     display: flex;
     padding: 20px; /* Adds some padding around the entire container */
     align-items: center;
     justify-content: space-between;
+    margin: 0 5rem;
 }
 
 .product-image {
@@ -53,7 +53,7 @@ chatbot image: https://nordvpn.com/wp-content/uploads/blog-featured-what-is-chat
 }
 
 table {
-    width: 90%; /* Adjust table width as needed */
+    width: 80%; /* Adjust table width as needed */
     border-collapse: collapse; /* Ensures that spacing can be added between cells */
     margin: 20px auto; /* Adds some space around the table */
 }
@@ -94,7 +94,6 @@ th, td {
 .power-times::before {
     background-color: #333; /* Your desired color for times marks */
 }
-
 
 .see-more-btn {
     display: inline-block;
@@ -158,6 +157,7 @@ section {
 .product-description-detailed {
     flex: 1;
     padding-right: 1rem; 
+    margin: 0 3rem;
 }
 
 .product-description-detailed h2{
@@ -178,7 +178,7 @@ section {
 }
 
 .product-details {
-    margin: 0 2rem;
+    margin: 0 8rem;
 }
 
 .power-word {
