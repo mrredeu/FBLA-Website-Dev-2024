@@ -15,8 +15,8 @@ chatbot image: https://nordvpn.com/wp-content/uploads/blog-featured-what-is-chat
 }
 
 .product-image {
-    max-width: 50%; /* Limits the width of the image to half of the container */
-    height: 25vw; /* Scales the height automatically to maintain aspect ratio */
+    width: 50%; /* Limits the width of the image to half of the container */
+    height: auto; /* Scales the height automatically to maintain aspect ratio */
     opacity: 0;
     margin-left: auto;
     margin-right: auto;
@@ -24,7 +24,7 @@ chatbot image: https://nordvpn.com/wp-content/uploads/blog-featured-what-is-chat
 }
 
 .product-description {
-    max-width: 50%; /* Limits the width of the text to half of the container */
+    width: 50%; /* Limits the width of the text to half of the container */
     padding: 0 20px; /* Adds padding around the text */
     opacity: 0;
     transition: opacity 0.5s ease, transform 0.5s ease;
