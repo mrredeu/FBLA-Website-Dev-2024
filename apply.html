@@ -33,31 +33,51 @@
         </div>
     </header>   
     <body>
-        <main class="container" style="margin-top: 7rem;">
-            <form action="your-server-endpoint" method="post" enctype="multipart/form-data" id="applicationForm">
+        <main class="container" style="margin-top: 3rem;">
+            <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                    const params = new URLSearchParams(window.location.search);
+                    const jobTitle = params.get('job');
+                    if (jobTitle) {
+                        const titleElement = document.createElement('h1');
+                        titleElement.textContent = `${decodeURIComponent(jobTitle)}`;
+                        titleElement.className = 'job-title';
+                        document.querySelector('.container').insertBefore(titleElement, document.querySelector('.container').firstChild);
+                    }
+                });
+            </script>
+            <form action="submit-application.php" method="post" enctype="multipart/form-data" id="applicationForm">
                 <div class="application-form">
                     <div class="form-section">
                         <h2>Personal Information</h2>
                         <div class="form-group">
-                            <label for="fullname">Full Name</label>
-                            <input type="text" id="fullname" name="fullname" class="form-control" require>
+                            <label for="firstName">First Name<span class="asterisk">&ast;</span></label>
+                            <input type="text" id="firstName" name="firstName" class="form-control" required>
                         </div>
                         <div class="form-group">
-                            <label for="email">Email Address</label>
+                            <label for="preferredName">Preferred Name</label>
+                            <input type="text" id="preferredName" name="preferredName" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name<span class="asterisk">&ast;</span></label>
+                            <input type="text" id="lastName" name="lastName" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address<span class="asterisk">&ast;</span></label>
                             <input type="email" id="email" name="email" class="form-control" required>
                         </div>
                         <div class="form-group">
-                            <label for="phone">Phone Number</label>
-                            <input type="tel" id="phone" name="phone" class="form-control" pattern="^\+?\d{0,13}">
+                            <label for="phone">Phone Number<span class="asterisk">&ast;</span></label>
+                            <input type="tel" id="phone" name="phone" class="form-control" pattern="^\+?\d{0,13}" required>
                         </div>
                     </div>
 
-                    <div class="form-section">
+                    <div class="form-section file-input-group">
                         <h2>Resume Submission</h2>
                         <p>Please upload your resume as a PDF file.</p>
                         <div class="form-group">
-                            <label for="resumeFile">Upload Resume:</label>
-                            <input type="file" id="resumeFile" name="resumeFile" accept=".pdf .csv" required>
+                            <label for="resumeFile">Upload Resume<span class="asterisk">&ast;</span></label>
+                            <input type="file" id="resumeFile" name="resumeFile" accept=".pdf" required>
                         </div>
                         <div class="form-group">
                             <label for="coverletter">Cover Letter</label>
@@ -65,6 +85,71 @@
                         </div>
                     </div>       
 
+                    <!-- New Section: Education History -->
+                    <div class="form-section" id="educationHistory">
+                        <h2>Education History</h2>
+                        <div class="form-group">
+                            <label for="educationLevel">Highest Level of Education<span class="asterisk">&ast;</span></label>
+                            <select id="educationLevel" name="educationLevel" class="form-control" required>
+                                <option value="">Select One</option>
+                                <option value="highSchool">High School</option>
+                                <option value="bachelor">Bachelor's Degree</option>
+                                <option value="master">Master's Degree</option>
+                                <option value="doctorate">Doctorate or Higher</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="fieldOfStudy">Field of Study<span class="asterisk">&ast;</span></label>
+                            <input type="text" id="fieldOfStudy" name="fieldOfStudy" class="form-control" required>
+                        </div>
+                    </div>
+
+                    <!-- New Section: Work Authorization -->
+                    <div class="form-section">
+                        <h2>Work Authorization</h2>
+                        <div class="form-group">
+                            <p>If hired, would you be able to present proof of your legal right to work in the U.S. or evidence of your U.S. citizenship?<span class="asterisk">*</span></p>
+                            <div class="radio-group">
+                                <input type="radio" id="workAuthorizationYes" name="workAuthorization" value="yes" required>
+                                <label for="workAuthorizationYes">Yes</label>
+                            </div>
+                            <div class="radio-group">
+                                <input type="radio" id="workAuthorizationNo" name="workAuthorization" value="no">
+                                <label for="workAuthorizationNo">No</label>
+                            </div>
+                        </div>   
+                        <div class="form-group">
+                            <p>Are you below the age of 18, do you have an age employment certificate?<span class="asterisk">*</span></p>
+                            <div class="radio-group">
+                                <input type="radio" id="workAuthorizationYes" name="workAuthorization" value="yes" required>
+                                <label for="workAuthorizationYes">Yes</label>
+                            </div>
+                            <div class="radio-group">
+                                <input type="radio" id="workAuthorizationNo" name="workAuthorization" value="no">
+                                <label for="workAuthorizationNo">No</label>
+                            </div>
+                        </div>  
+                        <div class="form-group">
+                            <p>Have you pleaded no contest to or been convicted of a felony within the last five years?<span class="asterisk">*</span></p>
+                            <div class="radio-group">
+                                <input type="radio" id="workAuthorizationYes" name="workAuthorization" value="yes" required>
+                                <label for="workAuthorizationYes">Yes</label>
+                            </div>
+                            <div class="radio-group">
+                                <input type="radio" id="workAuthorizationNo" name="workAuthorization" value="no">
+                                <label for="workAuthorizationNo">No</label>
+                            </div>
+                        </div>  
+                    </div>
+
+                    <!-- New Section: Certificates and Awards -->
+                    <div class="form-section">
+                        <h2>Certificates and Awards</h2>
+                        <div class="form-group">
+                            <label for="certificatesAwards">List any relevant certificates or awards</label>
+                            <textarea id="certificatesAwards" name="certificatesAwards" class="form-control" rows="3"></textarea>
+                        </div>
+                    </div>
                     <div class="form-section">
                         <h2>Job Questions</h2>
                         <div id="jobSpecificQuestions"></div>

@@ -11,7 +11,6 @@ chatbot image: https://nordvpn.com/wp-content/uploads/blog-featured-what-is-chat
     display: flex;
     padding: 20px; /* Adds some padding around the entire container */
     align-items: center;
-    justify-content: space-between;
     margin: 0 5rem;
 }
 
@@ -25,7 +24,7 @@ chatbot image: https://nordvpn.com/wp-content/uploads/blog-featured-what-is-chat
 }
 
 .product-description {
-    width: 50%; /* Limits the width of the text to half of the container */
+    max-width: 50%; /* Limits the width of the text to half of the container */
     padding: 0 20px; /* Adds padding around the text */
     opacity: 0;
     transition: opacity 0.5s ease, transform 0.5s ease;
@@ -149,6 +148,7 @@ section {
 
 .product-overview {
     margin-left: 2rem;
+    margin-right: 2rem;
     display: flex;
     justify-content: space-between; /* This will put space between the text and image */
     align-items: center; /* This will vertically align them in the center */

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Thank You - NexaPulse Careers</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <main class="container" style="text-align: center; padding-top: 50px;">
+            <h1>Thank You for Your Application!</h1>
+            <p>We appreciate your interest in joining NexaPulse. We have received your application for the <span id="jobPosition"></span> position. Our team is currently reviewing all applications and we will be in touch should your qualifications meet our needs for the role.</p>
+            <p>Best regards,<br>The NexaPulse Recruitment Team</p>
+        </main>
+        <script>
+            // JavaScript to dynamically insert the job position
+            const params = new URLSearchParams(window.location.search);
+            const jobPosition = params.get('job');
+            document.getElementById('jobPosition').textContent = jobPosition;
+        </script>
+    </body>
+</html>

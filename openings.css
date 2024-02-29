@@ -8,7 +8,7 @@
 
 .job-box {
     width: calc(33.333% - 20px); /* Adjust width as needed, subtracting the gap */
-    margin-bottom: 5rem; /* Adjust based on your layout */
+    margin-bottom: 7rem; /* Adjust based on your layout */
     padding: 1rem; /* Provides space inside the box */
     border: 1px solid #ddd; /* Example border */
     border-radius: .5rem; /* Rounded corners */
@@ -40,7 +40,7 @@
 }
 
 .job-box p, .job-box ul {
-    max-height: 150px; /* Example max height */
+    max-height: 200px; /* Example max height */
     overflow: auto; /* Allows scrolling within the element */
 }
 
