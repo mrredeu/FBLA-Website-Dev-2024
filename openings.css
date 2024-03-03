@@ -12,10 +12,18 @@ main {
     margin-top: 7rem;
 }
 
+.company-overview {
+    margin-bottom: 4rem;
+}
+
+.benefits {
+    margin-bottom: 4rem;
+}
+
 .company-overview h2,
 .benefits h2,
 .open-positions h2 {
-    color: #007bff;
+    color: #49a4de;
 }
 
 .company-overview p,
@@ -42,7 +50,7 @@ main {
     flex-direction: column;
     width: 330px;
     justify-content: space-between; /* Aligns content and apply button at top and bottom respectively */
-    height: 850px; /* Adjust based on your content for best appearance */
+    height: 700px; /* Adjust based on your content for best appearance */
     background-color: #fff; /* Background color */
     padding: 20px;
     margin: 10px;
@@ -51,7 +59,7 @@ main {
 }
 
 .job-box h3 {
-    color: #007bff;
+    color: #49a4de;
 }
 
 .job-box ul {
@@ -63,7 +71,7 @@ main {
     display: inline-block;
     padding: 10px 15px;
     margin-top: 10px;
-    background-color: #007bff;
+    background-color: #49a4de;
     color: white;
     text-decoration: none;
     border-radius: 5px;
@@ -72,4 +80,5 @@ main {
 
 .apply-btn:hover {
     background-color: #0056b3;
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
 }

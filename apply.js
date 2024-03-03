@@ -42,8 +42,38 @@ document.addEventListener("DOMContentLoaded", function() {
                     "How do you handle technical debt?",
                     "Explain a complex technical concept in simple terms.",
                     "What's your approach to debugging tough issues?"
+                ],
+                "Cloud Solutions Architect": [
+                    "Describe your experience in designing cloud architectures.",
+                    "How do you ensure cloud security and compliance?",
+                    "Can you explain your process for evaluating and implementing new cloud technologies?",
+                    "How do you balance cost, efficiency, and scalability in your cloud solutions?",
+                    "Describe a successful cloud migration project you led.",
+                    "How do you approach disaster recovery and business continuity planning in the cloud?",
+                    "What are your strategies for cloud resource optimization?",
+                    "Can you discuss a challenging cloud integration issue you resolved?"
+                ],
+                "Digital Marketing Specialist": [
+                    "How do you measure the success of your digital marketing campaigns?",
+                    "Describe an integrated marketing campaign you have worked on.",
+                    "What strategies do you use to increase web traffic?",
+                    "How do you stay updated with the latest digital marketing trends?",
+                    "Describe your experience with SEO and analytics tools.",
+                    "How do you approach target audience analysis?",
+                    "What is your experience with social media marketing?",
+                    "Describe a time when you had to pivot your digital marketing strategy."
+                ],
+                "Customer Support Agent": [
+                    "How do you handle difficult customers?",
+                    "Describe a time when you went above and beyond for a customer.",
+                    "How do you manage multiple customer inquiries simultaneously?",
+                    "What strategies do you use to ensure customer satisfaction?",
+                    "How do you handle receiving negative feedback from a customer?",
+                    "Describe your familiarity with customer support software.",
+                    "How do you stay informed about the products and services you support?",
+                    "Describe a time when you identified a potential improvement in the support process."
                 ]
-            };
+            };            
 
             const selectedQuestions = allQuestions[jobType].length > 5
                                     ? allQuestions[jobType].sort(() => 0.5 - Math.random()).slice(0, 5)
