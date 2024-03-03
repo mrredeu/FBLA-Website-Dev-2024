@@ -30,16 +30,19 @@ main {
 }
 
 .jobs-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly; /* Evenly spaces the job boxes */
+    align-items: flex-start; /* Aligns items to the top */
+    gap: 10px; /* Adds some space between the boxes */
 }
 
 .job-box {
     display: flex;
     flex-direction: column;
+    width: 330px;
     justify-content: space-between; /* Aligns content and apply button at top and bottom respectively */
-    min-height: 450px; /* Adjust based on your content for best appearance */
+    height: 850px; /* Adjust based on your content for best appearance */
     background-color: #fff; /* Background color */
     padding: 20px;
     margin: 10px;
@@ -53,7 +56,7 @@ main {
 
 .job-box ul {
     list-style-type: circle;
-    margin-left: 20px;
+    margin: 0;
 }
 
 .apply-btn {
