@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const jobType = params.get('job');
 
     const form = document.getElementById('applicationForm');
+    const elements = form.elements;
     const jobQuestionsContainer = document.getElementById('jobSpecificQuestions');
 
     // Load saved data or populate it for the first time
@@ -19,7 +20,6 @@ document.addEventListener("DOMContentLoaded", function() {
     function getJobQuestions(jobType) {
         // Check if the questions for the specific job type are already stored
         let storedQuestions = localStorage.getItem(jobType + 'Questions');
-        console.log(storedQuestions);
         if (!storedQuestions) {
             // Retrieve from the predefined questions object if not stored
             const allQuestions = {
@@ -115,6 +115,37 @@ document.addEventListener("DOMContentLoaded", function() {
         const formData = new FormData(form);
         formData.forEach((value, key) => localStorage.setItem(key, value));
     }
+
+    // Load any previously saved data from local storage when the page loads
+    loadFormData();
+
+    // Add event listeners to each form field to save data to local storage when it changes
+    for (let i = 0; i < elements.length; i++) {
+        const element = elements[i];
+        element.addEventListener('change', function() {
+            saveFormData();
+        });
+    }
+
+    // Function to save form data to local storage
+    function saveFormData() {
+        for (let i = 0; i < elements.length; i++) {
+            const element = elements[i];
+            if (element.name && element.type !== 'file') { // Don't save file inputs
+                localStorage.setItem(element.name, element.value);
+            }
+        }
+    }
+
+    // Function to load form data from local storage
+    function loadFormData() {
+        for (let i = 0; i < elements.length; i++) {
+            const element = elements[i];
+            if (element.name && localStorage.getItem(element.name) && element.type !== 'file') {
+                element.value = localStorage.getItem(element.name);
+            }
+        }
+    }
 });
 
 function handleEducationHistory() {
@@ -127,10 +158,12 @@ function handleEducationHistory() {
 
 function addEducationSection() {
     const educationHistoryDiv = document.getElementById('educationHistory');
-    if (educationHistoryDiv) {
-        const newSection = document.createElement('div');
-        newSection.className = 'education-section';
-        newSection.innerHTML = `
+    const addEducationBtn = document.getElementById('addEducation');
+
+    addEducationBtn.addEventListener('click', function() {
+        const newEducationSection = document.createElement('div');
+        newEducationSection.className = 'education-section';
+        newEducationSection.innerHTML = `
             <div class="form-group">
                 <label>Highest Level of Education<span class="asterisk">*</span></label>
                 <select name="educationLevel[]" class="form-control" required>
@@ -145,19 +178,47 @@ function addEducationSection() {
                 <label>Field of Study<span class="asterisk">*</span></label>
                 <input type="text" name="fieldOfStudy[]" class="form-control" required>
             </div>
-            <button type="button" class="delete-education">Delete</button>
+            <button type="button" class="delete-education">Remove</button>
         `;
-        newSection.querySelector('.delete-education').addEventListener('click', () => newSection.remove());
-        educationHistoryDiv.appendChild(newSection);
-        updateEducationSections();
-    }
-}
+
+        // This button will remove the specific education section it belongs to.
+        newEducationSection.querySelector('.delete-education').addEventListener('click', function() {
+            this.parentNode.remove();
+        });
+
+        // Insert the new education section right before the add button
+        educationHistoryDiv.insertBefore(newEducationSection, addEducationBtn);
+    });
+};
 
 function updateEducationSections() {
     const educationHistoryDiv = document.getElementById('educationHistory');
     const educationSections = educationHistoryDiv.querySelectorAll('.education-section');
     educationSections.forEach((section, index) => {
         const deleteButton = section.querySelector('.delete-education');
-        deleteButton.style.display = index > 0 ? 'block' : 'none';
+        deleteButton.style.display = index > -1 ? 'block' : 'none';
     });
 }
+
+document.addEventListener("DOMContentLoaded", function() {
+    const params = new URLSearchParams(window.location.search);
+    const jobTitle = params.get('job');
+    const error = params.get('error');
+
+    if (jobTitle) {
+        const titleElement = document.createElement('h1');
+        titleElement.textContent = `${decodeURIComponent(jobTitle)}`;
+        titleElement.className = 'job-title';
+        document.querySelector('.container').insertBefore(titleElement, document.querySelector('.container').firstChild);
+    }
+
+    if (error === 'email') {
+        const errorMessage = document.createElement('div');
+        errorMessage.className = 'error-message';
+        errorMessage.textContent = 'There was an error submitting your application. Please try again.';
+        errorMessage.style.color = 'red';
+        errorMessage.style.textAlign = 'center';
+        errorMessage.style.marginTop = '20px';
+        document.querySelector('.application-form').prepend(errorMessage);
+    }
+});

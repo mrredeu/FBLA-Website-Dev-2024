@@ -34,18 +34,6 @@
     </header>   
     <body>
         <main class="container" style="margin-top: 3rem;">
-            <script>
-                document.addEventListener("DOMContentLoaded", function() {
-                    const params = new URLSearchParams(window.location.search);
-                    const jobTitle = params.get('job');
-                    if (jobTitle) {
-                        const titleElement = document.createElement('h1');
-                        titleElement.textContent = `${decodeURIComponent(jobTitle)}`;
-                        titleElement.className = 'job-title';
-                        document.querySelector('.container').insertBefore(titleElement, document.querySelector('.container').firstChild);
-                    }
-                });
-            </script>
             <form action="submit-application.php" method="post" enctype="multipart/form-data" id="applicationForm">
                 <div class="application-form">
                     <div class="form-section">
@@ -102,42 +90,49 @@
                             <label for="fieldOfStudy">Field of Study<span class="asterisk">&ast;</span></label>
                             <input type="text" id="fieldOfStudy" name="fieldOfStudy" class="form-control" required>
                         </div>
+                        <button type="button" id="addEducation">Add More Education</button>
                     </div>
 
-                    <!-- New Section: Work Authorization -->
+                    <!-- Work Authorization Section -->
                     <div class="form-section">
                         <h2>Work Authorization</h2>
+                        
+                        <!-- Question 1 -->
                         <div class="form-group">
                             <p>If hired, would you be able to present proof of your legal right to work in the U.S. or evidence of your U.S. citizenship?<span class="asterisk">*</span></p>
                             <div class="radio-group">
-                                <input type="radio" id="workAuthorizationYes" name="workAuthorization" value="yes" required>
-                                <label for="workAuthorizationYes">Yes</label>
+                                <input type="radio" id="legalRightYes" name="legalRightWork" value="yes" required>
+                                <label for="legalRightYes">Yes</label>
                             </div>
                             <div class="radio-group">
-                                <input type="radio" id="workAuthorizationNo" name="workAuthorization" value="no">
-                                <label for="workAuthorizationNo">No</label>
+                                <input type="radio" id="legalRightNo" name="legalRightWork" value="no">
+                                <label for="legalRightNo">No</label>
                             </div>
                         </div>   
+                        
+                        <!-- Question 2 -->
                         <div class="form-group">
-                            <p>Are you below the age of 18, do you have an age employment certificate?<span class="asterisk">*</span></p>
+                            <p>Are you below the age of 18, and do you have an age employment certificate?<span class="asterisk">*</span></p>
                             <div class="radio-group">
-                                <input type="radio" id="workAuthorizationYes" name="workAuthorization" value="yes" required>
-                                <label for="workAuthorizationYes">Yes</label>
+                                <input type="radio" id="ageCertificateYes" name="ageCertificate" value="yes" required>
+                                <label for="ageCertificateYes">Yes</label>
                             </div>
                             <div class="radio-group">
-                                <input type="radio" id="workAuthorizationNo" name="workAuthorization" value="no">
-                                <label for="workAuthorizationNo">No</label>
+                                <input type="radio" id="ageCertificateNo" name="ageCertificate" value="no">
+                                <label for="ageCertificateNo">No</label>
                             </div>
                         </div>  
+
+                        <!-- Question 3 -->
                         <div class="form-group">
                             <p>Have you pleaded no contest to or been convicted of a felony within the last five years?<span class="asterisk">*</span></p>
                             <div class="radio-group">
-                                <input type="radio" id="workAuthorizationYes" name="workAuthorization" value="yes" required>
-                                <label for="workAuthorizationYes">Yes</label>
+                                <input type="radio" id="felonyYes" name="felonyConviction" value="yes" required>
+                                <label for="felonyYes">Yes</label>
                             </div>
                             <div class="radio-group">
-                                <input type="radio" id="workAuthorizationNo" name="workAuthorization" value="no">
-                                <label for="workAuthorizationNo">No</label>
+                                <input type="radio" id="felonyNo" name="felonyConviction" value="no">
+                                <label for="felonyNo">No</label>
                             </div>
                         </div>  
                     </div>

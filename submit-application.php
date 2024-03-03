@@ -1,52 +1,56 @@
 <?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $firstName = $_POST['firstName'];
-    $preferredName = $_POST['preferredName'];
-    $lastName = $_POST['lastName'];
-    $email = $_POST['email'];
-    $phone = $_POST['phone'];
-    $coverletter = $_POST['coverletter'];
-    $jobType = $_POST['jobType'];
+$firstName = $_POST['firstName'];
+if (!empty($preferredName)) {$mailBody .= "Preferred Name: $preferredName\n";}
+$lastName = $_POST['lastName'];
+$email = $_POST['email'];
+$phone = $_POST['phone'];
+if (!empty($coverletter)) {$mailBody .= "Cover Letter: $coverletter\n";}
+$jobType = $_POST['jobType'];
+$educationLevel = $_POST['educationLevel'];
+$fieldOfStudy = $_POST['fieldOfStudy'];
+$workAuthorization = $_POST['workAuthorization'];
+if (!empty($certificatesAwards)) {$mailBody .= "Certificates and Awards: $certificatesAwards\n";}
 
-    // Process job-specific questions
-    $jobQuestionsAnswers = [];
-    foreach ($_POST as $key => $value) {
-        if (strpos($key, 'question_') === 0) { // Assuming your questions have names like 'question_1', 'question_2', etc.
-            $jobQuestionsAnswers[] = $value;
-        }
-    }
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
 
-    // Process file upload
-    $resumeFilePath = "";
-    if (isset($_FILES['resumeFile']) && $_FILES['resumeFile']['error'] == 0) {
-        $resumeFilePath = 'uploads/' . basename($_FILES['resumeFile']['name']); // Ensure you have an 'uploads' directory with write permissions
-        move_uploaded_file($_FILES['resumeFile']['tmp_name'], $resumeFilePath);
-    }
+require "vendor/autoload.php";
 
-    // Email content
-    $emailContent = "First Name: $firstName\n";
-    $emailContent .= "Preferred Name: $preferredName\n";
-    $emailContent .= "Last Name: $lastName\n";
-    $emailContent .= "Email: $email\n";
-    $emailContent .= "Phone: $phone\n";
-    $emailContent .= "Cover Letter: $coverletter\n";
-    $emailContent .= "Job Type: $jobType\n";
-    $emailContent .= "Job Questions and Answers:\n";
-    foreach ($jobQuestionsAnswers as $answer) {
-        $emailContent .= "- $answer\n";
-    }
+$mail = new PHPMailer();
+$mail->isSMTP();
+$mail->SMTPDebug = SMTP::DEBUG_SERVER;
+$mail->Host = "smtp.gmail.com";
+$mail->Port = 465;
+$mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+$mail->SMTPAuth = true;
+$mail->Username = "pashatestermails@gmail.com";
+$mail->Password = "zyvnuncmydpegrhf";
 
-    // Send email
-    $to = 'pasha.naruta@gmail.com';
-    $subject = 'New Job Application Submission';
-    $headers = "From:"  . 'pashatestermails@gmail.com';
+$mail->setFrom('pashatestermails@gmail.com', 'NexaPulse Career');
+$mail->addAddress('pashatestermails@gmail.com', 'NexaPulse HR');
 
-    if (mail($to, $subject, $emailContent, $headers)) {
-        echo "sent the application.";
-        //header('Location: thank_you.html');
-        exit;
-    } else {
-        echo "Failed to send the application.";
-    }
+$mail->Subject = "Application Form: " . $firstName . " " . $lastName;
+
+// Construct email body
+$mailBody = "First Name: $firstName\n";
+$mailBody .= "Preferred Name: $preferredName\n";
+$mailBody .= "Last Name: $lastName\n";
+$mailBody .= "Email: $email\n";
+$mailBody .= "Phone: $phone\n";
+$mailBody .= "Cover Letter: $coverletter\n";
+$mailBody .= "Job Type: $jobType\n";
+$mailBody .= "Education Level: $educationLevel\n";
+$mailBody .= "Field of Study: $fieldOfStudy\n";
+$mailBody .= "Work Authorization: $workAuthorization\n";
+$mailBody .= "Certificates and Awards: $certificatesAwards\n";
+
+$mail->Body = $mailBody;
+
+if (!$mail->send()) {
+    // Redirect back to the application form if the email was not sent
+    header('Location: apply.html?error=email');
+} else {
+    // Redirect to a thank you page if the email was sent
+    header('Location: thankyou.html');
 }
 ?>
