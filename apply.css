@@ -58,6 +58,11 @@
     border-radius: 5px;
     border: 1px solid #ccc;
     box-sizing: border-box; 
+    resize: vertical;
+}
+
+.form-group textarea {
+    min-height: 100px;
 }
 
 .form-control:focus {

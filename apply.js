@@ -1,5 +1,28 @@
 document.addEventListener("DOMContentLoaded", function() {
     const params = new URLSearchParams(window.location.search);
+    const jobTitle = params.get('job');
+    const error = params.get('error');
+
+    if (jobTitle) {
+        const titleElement = document.createElement('h1');
+        titleElement.textContent = `${decodeURIComponent(jobTitle)}`;
+        titleElement.className = 'job-title';
+        document.querySelector('.container').insertBefore(titleElement, document.querySelector('.container').firstChild);
+    }
+
+    if (error === 'email') {
+        const errorMessage = document.createElement('div');
+        errorMessage.className = 'error-message';
+        errorMessage.textContent = 'There was an error submitting your application. Please try again.';
+        errorMessage.style.color = 'red';
+        errorMessage.style.textAlign = 'center';
+        errorMessage.style.marginTop = '20px';
+        document.querySelector('.application-form').prepend(errorMessage);
+    }
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+    const params = new URLSearchParams(window.location.search);
     const jobType = params.get('job');
 
     const form = document.getElementById('applicationForm');
@@ -9,9 +32,6 @@ document.addEventListener("DOMContentLoaded", function() {
     // Load saved data or populate it for the first time
     const questions = getJobQuestions(jobType);
     populateJobQuestions(questions, jobQuestionsContainer);
-
-    // Event listener for form submission
-    form.addEventListener('submit', handleFormSubmission);
 
     // Event listener for adding education history sections
     handleEducationHistory();
@@ -108,37 +128,11 @@ document.addEventListener("DOMContentLoaded", function() {
         const textarea = document.createElement('textarea');
         textarea.setAttribute('name', question.replace(/\s+/g, '-').toLowerCase());
         textarea.setAttribute('required', 'true');
+        textarea.classList.add('form-control');
         
         div.appendChild(label);
         div.appendChild(textarea);
         return div;
-    }
-
-    function handleFormSubmission(event) {
-        if (!validateForm()) {
-            event.preventDefault();
-        } else {
-            saveFormData();
-        }
-    }
-
-    function validateForm() {
-        let isValid = true;
-        ['firstName', 'lastName', 'email', 'phone'].forEach(id => {
-            const input = document.getElementById(id);
-            if (!input.value.trim()) {
-                alert(`Please enter your ${id}.`);
-                isValid = false;
-            }
-        });
-
-        const email = document.getElementById('email');
-        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
-            alert('Please enter a valid email address.');
-            isValid = false;
-        }
-
-        return isValid;
     }
 
     function saveFormData() {
@@ -176,27 +170,23 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         }
     }
-});
 
-function handleEducationHistory() {
-    const addEducationButton = document.getElementById('addEducation');
-    if (addEducationButton) {
-        addEducationButton.addEventListener('click', addEducationSection);
-        updateEducationSections();
+    function handleEducationHistory() {
+        const addEducationButton = document.getElementById('addEducation');
+        if (addEducationButton) {
+            addEducationButton.addEventListener('click', addEducationSection);
+            updateEducationSections();
+        }
     }
-}
-
-function addEducationSection() {
-    const educationHistoryDiv = document.getElementById('educationHistory');
-    const addEducationBtn = document.getElementById('addEducation');
-
-    addEducationBtn.addEventListener('click', function() {
+    
+    function addEducationSection() {
+        const educationHistoryDiv = document.getElementById('educationHistory');
         const newEducationSection = document.createElement('div');
         newEducationSection.className = 'education-section';
         newEducationSection.innerHTML = `
             <div class="form-group">
                 <label>Highest Level of Education<span class="asterisk">*</span></label>
-                <select name="educationLevel[]" class="form-control" required>
+                <select name="educationLevel[]" class="form-control" required="true">
                     <option value="">Select One</option>
                     <option value="highSchool">High School</option>
                     <option value="bachelor">Bachelor's Degree</option>
@@ -206,49 +196,49 @@ function addEducationSection() {
             </div>
             <div class="form-group">
                 <label>Field of Study<span class="asterisk">*</span></label>
-                <input type="text" name="fieldOfStudy[]" class="form-control" required>
+                <input type="text" name="fieldOfStudy[]" class="form-control" required="true">
             </div>
-            <button type="button" class="delete-education">Remove</button>
+            <button type="button" class="delete-education">Remove Education</button>
         `;
-
-        // This button will remove the specific education section it belongs to.
+    
         newEducationSection.querySelector('.delete-education').addEventListener('click', function() {
             this.parentNode.remove();
         });
-
-        // Insert the new education section right before the add button
-        educationHistoryDiv.insertBefore(newEducationSection, addEducationBtn);
-    });
-};
-
-function updateEducationSections() {
-    const educationHistoryDiv = document.getElementById('educationHistory');
-    const educationSections = educationHistoryDiv.querySelectorAll('.education-section');
-    educationSections.forEach((section, index) => {
-        const deleteButton = section.querySelector('.delete-education');
-        deleteButton.style.display = index > -1 ? 'block' : 'none';
-    });
-}
-
-document.addEventListener("DOMContentLoaded", function() {
-    const params = new URLSearchParams(window.location.search);
-    const jobTitle = params.get('job');
-    const error = params.get('error');
-
-    if (jobTitle) {
-        const titleElement = document.createElement('h1');
-        titleElement.textContent = `${decodeURIComponent(jobTitle)}`;
-        titleElement.className = 'job-title';
-        document.querySelector('.container').insertBefore(titleElement, document.querySelector('.container').firstChild);
+    
+        educationHistoryDiv.insertBefore(newEducationSection, educationHistoryDiv.lastElementChild);
     }
+    
+    document.getElementById('addEducation').addEventListener('click', addEducationSection);
+    
+    function updateEducationSections() {
+        const educationHistoryDiv = document.getElementById('educationHistory');
+        const educationSections = educationHistoryDiv.querySelectorAll('.education-section');
+        educationSections.forEach((section, index) => {
+            const deleteButton = section.querySelector('.delete-education');
+            deleteButton.style.display = index > -1 ? 'block' : 'none';
+        });
+    }    
+});
 
-    if (error === 'email') {
-        const errorMessage = document.createElement('div');
-        errorMessage.className = 'error-message';
-        errorMessage.textContent = 'There was an error submitting your application. Please try again.';
-        errorMessage.style.color = 'red';
-        errorMessage.style.textAlign = 'center';
-        errorMessage.style.marginTop = '20px';
-        document.querySelector('.application-form').prepend(errorMessage);
+document.getElementById('submitBtn').addEventListener('click', function(event) {
+    event.preventDefault();
+    let isValid = true;
+    let requiredFields = document.querySelectorAll('.form-control[required]');
+
+    // Validation logic
+    requiredFields.forEach(function(field) {
+        if (field.value.trim() === '') {
+            isValid = false;
+            field.style.borderColor = 'red';
+        } else {
+            field.style.borderColor = '';
+        }
+    });
+
+    // If validation passes, wait for 5 seconds, then submit the form
+    if (isValid) {
+        document.getElementById('applicationForm').submit();
+    } else {
+        alert('Please fill out the required field(s) highlighted in red.');
     }
 });

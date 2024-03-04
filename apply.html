@@ -40,7 +40,7 @@
                         <h2>Personal Information</h2>
                         <div class="form-group">
                             <label for="firstName">First Name<span class="asterisk">&ast;</span></label>
-                            <input type="text" id="firstName" name="firstName" class="form-control" required>
+                            <input type="text" id="firstName" name="firstName" class="form-control" required="true">
                         </div>
                         <div class="form-group">
                             <label for="preferredName">Preferred Name</label>
@@ -48,15 +48,15 @@
                         </div>
                         <div class="form-group">
                             <label for="lastName">Last Name<span class="asterisk">&ast;</span></label>
-                            <input type="text" id="lastName" name="lastName" class="form-control" required>
+                            <input type="text" id="lastName" name="lastName" class="form-control" required="true">
                         </div>
                         <div class="form-group">
                             <label for="email">Email Address<span class="asterisk">&ast;</span></label>
-                            <input type="email" id="email" name="email" class="form-control" required>
+                            <input type="email" id="email" name="email" class="form-control" required="true">
                         </div>
                         <div class="form-group">
                             <label for="phone">Phone Number<span class="asterisk">&ast;</span></label>
-                            <input type="tel" id="phone" name="phone" class="form-control" pattern="^\+?\d{0,13}" required>
+                            <input type="tel" id="phone" name="phone" class="form-control" pattern="^\+?\d{0,13}" required="true">
                         </div>
                     </div>
 
@@ -65,7 +65,7 @@
                         <p>Please upload your resume as a PDF file.</p>
                         <div class="form-group">
                             <label for="resumeFile">Upload Resume<span class="asterisk">&ast;</span></label>
-                            <input type="file" id="resumeFile" name="resumeFile" accept=".pdf" required>
+                            <input type="file" id="resumeFile" name="resumeFile" accept=".pdf" required="true">
                         </div>
                         <div class="form-group">
                             <label for="coverletter">Cover Letter</label>
@@ -78,7 +78,7 @@
                         <h2>Education History</h2>
                         <div class="form-group">
                             <label for="educationLevel">Highest Level of Education<span class="asterisk">&ast;</span></label>
-                            <select id="educationLevel" name="educationLevel" class="form-control" required>
+                            <select id="educationLevel" name="educationLevel" class="form-control" required="true">
                                 <option value="">Select One</option>
                                 <option value="highSchool">High School</option>
                                 <option value="bachelor">Bachelor's Degree</option>
@@ -88,10 +88,37 @@
                         </div>
                         <div class="form-group">
                             <label for="fieldOfStudy">Field of Study<span class="asterisk">&ast;</span></label>
-                            <input type="text" id="fieldOfStudy" name="fieldOfStudy" class="form-control" required>
+                            <input type="text" id="fieldOfStudy" name="fieldOfStudy" class="form-control" required="true">
                         </div>
                         <button type="button" id="addEducation">Add More Education</button>
                     </div>
+
+                    <div class="form-section">
+                        <h2>Employment Terms</h2>
+                        <div class="form-group">
+                            <label>Are you interested in full-time employment, part-time, or either?</label>
+                            <select name="employmentType" class="form-control" required="true">
+                                <option value="full-time">Full-time</option>
+                                <option value="part-time">Part-time</option>
+                                <option value="either">Either</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>What are your salary expectations?<span class="asterisk">*</span></label>
+                            <input type="text" name="salaryExpectations" class="form-control" required="true">
+                        </div>
+                        <div class="form-group">
+                            <label>Are you willing to relocate or travel for work?<span class="asterisk">*</span></label>
+                            <select name="relocateTravel" class="form-control" required="true">
+                                <option value="yes">Yes</option>
+                                <option value="no">No</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>When can you start working?<span class="asterisk">*</span></label>
+                            <input type="date" name="startWorking" class="form-control" required="true">
+                        </div>
+                    </div>                  
 
                     <!-- Work Authorization Section -->
                     <div class="form-section">
@@ -101,7 +128,7 @@
                         <div class="form-group">
                             <p>If hired, would you be able to present proof of your legal right to work in the U.S. or evidence of your U.S. citizenship?<span class="asterisk">*</span></p>
                             <div class="radio-group">
-                                <input type="radio" id="legalRightYes" name="legalRightWork" value="yes" required>
+                                <input type="radio" id="legalRightYes" name="legalRightWork" value="yes" required="true">
                                 <label for="legalRightYes">Yes</label>
                             </div>
                             <div class="radio-group">
@@ -114,7 +141,7 @@
                         <div class="form-group">
                             <p>Are you below the age of 18, and do you have an age employment certificate?<span class="asterisk">*</span></p>
                             <div class="radio-group">
-                                <input type="radio" id="ageCertificateYes" name="ageCertificate" value="yes" required>
+                                <input type="radio" id="ageCertificateYes" name="ageCertificate" value="yes" required="true">
                                 <label for="ageCertificateYes">Yes</label>
                             </div>
                             <div class="radio-group">
@@ -127,7 +154,7 @@
                         <div class="form-group">
                             <p>Have you pleaded no contest to or been convicted of a felony within the last five years?<span class="asterisk">*</span></p>
                             <div class="radio-group">
-                                <input type="radio" id="felonyYes" name="felonyConviction" value="yes" required>
+                                <input type="radio" id="felonyYes" name="felonyConviction" value="yes" required="true">
                                 <label for="felonyYes">Yes</label>
                             </div>
                             <div class="radio-group">
@@ -139,18 +166,26 @@
 
                     <!-- New Section: Certificates and Awards -->
                     <div class="form-section">
-                        <h2>Certificates and Awards</h2>
+                        <h2>Skills and Awards</h2>
+                        <div class="form-group">
+                            <label>Do you have experience with specific software or tools relevant to the position?<span class="asterisk">*</span></label>
+                            <textarea name="softwareExperience" class="form-control" required="true"></textarea>
+                        </div>
                         <div class="form-group">
                             <label for="certificatesAwards">List any relevant certificates or awards</label>
                             <textarea id="certificatesAwards" name="certificatesAwards" class="form-control" rows="3"></textarea>
                         </div>
+                        <div class="form-group">
+                            <label>Can you provide samples of your work, such as a portfolio or project descriptions?</label>
+                            <textarea name="workSamples" class="form-control"></textarea>
+                        </div>
                     </div>
                     <div class="form-section">
-                        <h2>Job Questions</h2>
+                        <h2>Let Us Know More About You</h2>
                         <div id="jobSpecificQuestions"></div>
                     </div>
 
-                    <button type="submit" class="btn-submit">Submit Application</button>
+                    <button type="submit" id="submitBtn" class="btn-submit">Submit Application</button>
                 </div>
             </form>
         </main>
