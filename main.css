@@ -35,3 +35,102 @@
     margin: 1rem 13rem;
     text-align: left;
 }
+
+/* For screens between 400px and 550px */
+@media screen and (min-width: 400px) and (max-width: 550px) {
+    .goals-highlights {
+        margin: 0;
+    }
+    .main-goal {
+        margin-top: 0;
+    }
+    .main-goal h2{
+        font-size: 2rem;
+    }
+
+    .main-goal p {
+        margin: 1rem 3rem 0 3rem;
+    }
+
+    .power-word {
+        font-size: 1.5rem;
+    }
+
+    .goal p {
+        font-size: 1rem;
+        margin: 0 3rem;
+        text-align: center;
+    }
+
+    .goal {
+        margin-bottom: 2rem;
+    }
+}
+
+/* For screens between 550px and 768px */
+@media screen and (min-width: 550px) and (max-width: 768px) {
+    .goals-highlights {
+        margin: 0;
+    }
+    .main-goal {
+        margin-top: 0;
+    }
+    .main-goal h2{
+        font-size: 2rem;
+    }
+
+    .main-goal p {
+        margin: 1rem 3rem 0 3rem;
+    }
+
+    .power-word {
+        font-size: 1.5rem;
+    }
+
+    .goal p {
+        font-size: 1rem;
+        margin: 0 3rem;
+    }
+
+    .goal {
+        margin-bottom: 2rem;
+    }
+}
+
+/* For screens between 768px and 1024px */
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    .goals-highlights {
+        margin: 0;
+    }
+
+    .main-goal {
+        margin-top: 0;
+    }
+
+    .main-goal h2{
+        font-size: 2rem;
+    }
+
+    .main-goal p {
+        margin: 0 5rem;
+    }
+
+    .power-word {
+        font-size: 1.5rem;
+    }
+
+    .goal p {
+        font-size: 1rem;
+    }
+}
+
+/* For screens between 1024px and 1440px */
+@media screen and (min-width: 1024px) and (max-width: 1440px) {
+    .goals-highlights {
+        margin: 0;
+    }
+
+    .main-goal {
+        margin-top: 0;
+    }
+}
