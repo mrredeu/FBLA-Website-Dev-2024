@@ -6,17 +6,40 @@
         <title>Thank You - NexaPulse Careers</title>
         <link rel="stylesheet" href="style.css">
     </head>
+    <header>
+        <div class="header-content">
+            <h1>
+                <img src="logo.png" alt="NexaPulse Logo" />
+                NexaPulse
+            </h1>
+            <nav>
+                <a class="menu-trigger">Menu &#9662;</a>
+                <ul class="navbar-content">
+                    <li><a href="main.html">What Is NexaPulse?</a></li>
+                    <li class="dropdown">
+                        <a href="products.html">Solutions<span class="arrow down">&#9662;</span></a>
+                        <ul class="dropdown-content">
+                            <li><a href="insight-analytics.html">Insight Analytics</a></li>
+                            <li><a href="crm-Integrations.html">CRM Integration</a></li>
+                            <li><a href="cloud-platform.html">Cloud Platform</a></li>
+                            <li><a href="workflow-automation.html">Worflow Automation</a></li>
+                            <li><a href="ecommerce-Integration.html">Ecommerce Integration</a></li>
+                            <li><a href="ai-chatbot.html">AI Chatbot Framework</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="openings.html">Careers</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>   
     <body>
-        <main class="container" style="text-align: center; padding-top: 50px;">
+        <main class="thank-you-container" style="text-align: center; padding: 50px; font-family: Arial, sans-serif;">
             <h1>Thank You for Your Application!</h1>
-            <p>We appreciate your interest in joining NexaPulse. We have received your application for the <span id="jobPosition"></span> position. Our team is currently reviewing all applications and we will be in touch should your qualifications meet our needs for the role.</p>
-            <p>Best regards,<br>The NexaPulse Recruitment Team</p>
+            <p>We appreciate the time you've taken to apply for a position with us. Your application has been received and is under review.</p>
+            <p>Please expect a follow-up from our team within the next two weeks. In the meantime, feel free to explore more about our company and stay connected:</p>
+            <footer class="container" style="margin-top: 40px;">
+                <small>&copy; 2024 NexaPulse Technologies. All rights reserved.</small>
+            </footer>
         </main>
-        <script>
-            // JavaScript to dynamically insert the job position
-            const params = new URLSearchParams(window.location.search);
-            const jobPosition = params.get('job');
-            document.getElementById('jobPosition').textContent = jobPosition;
-        </script>
     </body>
 </html>

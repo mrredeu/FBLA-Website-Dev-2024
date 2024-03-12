@@ -1,15 +1,22 @@
 <?php
 $firstName = $_POST['firstName'];
-if (!empty($preferredName)) {$mailBody .= "Preferred Name: $preferredName\n";}
+$preferredName = $_POST['preferredName'];
 $lastName = $_POST['lastName'];
 $email = $_POST['email'];
 $phone = $_POST['phone'];
-if (!empty($coverletter)) {$mailBody .= "Cover Letter: $coverletter\n";}
-$jobType = $_POST['jobType'];
+$coverletter = $_POST['coverletter'];
 $educationLevel = $_POST['educationLevel'];
 $fieldOfStudy = $_POST['fieldOfStudy'];
-$workAuthorization = $_POST['workAuthorization'];
-if (!empty($certificatesAwards)) {$mailBody .= "Certificates and Awards: $certificatesAwards\n";}
+$employmentType = $_POST['employmentType'];
+$salaryExpectations = $_POST['salaryExpectations'];
+$relocateTravel = $_POST['relocateTravel'];
+$startWorking = $_POST['startWorking'];
+$legalRightWork = $_POST['legalRightWork'];
+$ageCertificate = $_POST['ageCertificate'];
+$felonyConviction = $_POST['felonyConviction'];
+$softwareExperience = $_POST['softwareExperience'];
+$certificatesAwards = $_POST['certificatesAwards'];
+$workSamples = $_POST['workSamples'];
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
@@ -25,6 +32,7 @@ $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
 $mail->SMTPAuth = true;
 $mail->Username = "pashatestermails@gmail.com";
 $mail->Password = "zyvnuncmydpegrhf";
+$mail->SMTPDebug = 0;
 
 $mail->setFrom('pashatestermails@gmail.com', 'NexaPulse Career');
 $mail->addAddress('pashatestermails@gmail.com', 'NexaPulse HR');
@@ -33,16 +41,35 @@ $mail->Subject = "Application Form: " . $firstName . " " . $lastName;
 
 // Construct email body
 $mailBody = "First Name: $firstName\n";
-$mailBody .= "Preferred Name: $preferredName\n";
+if (!empty($preferredName)) $mailBody .= "Preferred Name: $preferredName\n";
 $mailBody .= "Last Name: $lastName\n";
 $mailBody .= "Email: $email\n";
 $mailBody .= "Phone: $phone\n";
-$mailBody .= "Cover Letter: $coverletter\n";
-$mailBody .= "Job Type: $jobType\n";
+if (!empty($coverletter)) $mailBody .= "Cover Letter: $coverletter\n";
 $mailBody .= "Education Level: $educationLevel\n";
 $mailBody .= "Field of Study: $fieldOfStudy\n";
-$mailBody .= "Work Authorization: $workAuthorization\n";
-$mailBody .= "Certificates and Awards: $certificatesAwards\n";
+$mailBody .= "Employment Type: $employmentType\n";
+$mailBody .= "Salary Expectations: $salaryExpectations\n";
+$mailBody .= "Willing to Relocate/Travel: $relocateTravel\n";
+$mailBody .= "Start Working: $startWorking\n";
+$mailBody .= "If hired, would you be able to present proof of your legal right to work in the U.S. or evidence of your U.S. citizenship?: $legalRightWork\n";
+$mailBody .= "Are you below the age of 18, and do you have an age employment certificate?: $ageCertificate\n";
+$mailBody .= "Have you pleaded no contest to or been convicted of a felony within the last five years?: $felonyConviction\n";
+if (!empty($softwareExperience)) $mailBody .= "Software Experience: $softwareExperience\n";
+if (!empty($certificatesAwards)) $mailBody .= "Certificates and Awards: $certificatesAwards\n";
+if (!empty($workSamples)) $mailBody .= "Work Samples: $workSamples\n";
+$mail->addAttachment($_FILES['resumeFile']['tmp_name'], $_FILES['resumeFile']['name']);
+
+
+// Iterate over $_POST to find and append dynamically generated question responses
+foreach ($_POST as $key => $value) {
+    if (strpos($key, 'question-') === 0 && !empty($value)) {  // Assuming you prefix JS questions with 'question-'
+        // Format the key to look nice in the email
+        $formattedKey = str_replace('-', ' ', substr($key, 9));
+        $formattedKey = ucwords($formattedKey);
+        $mailBody .= "$formattedKey: $value\n";
+    }
+}
 
 $mail->Body = $mailBody;
 

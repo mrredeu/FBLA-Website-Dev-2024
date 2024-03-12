@@ -113,27 +113,27 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
-    function createQuestionElement(question) {
+    function createQuestionElement(question, index) {
         const div = document.createElement('div');
         div.classList.add('form-group');
-        
+    
         const label = document.createElement('label');
         label.textContent = question;
-        
+    
         const asterisk = document.createElement('span');
         asterisk.classList.add('asterisk');
         asterisk.textContent = '*';
         label.appendChild(asterisk);
-
+    
         const textarea = document.createElement('textarea');
-        textarea.setAttribute('name', question.replace(/\s+/g, '-').toLowerCase());
+        textarea.setAttribute('name', `dynamicQuestion[${index}]`);
         textarea.setAttribute('required', 'true');
         textarea.classList.add('form-control');
-        
+    
         div.appendChild(label);
         div.appendChild(textarea);
         return div;
-    }
+    }    
 
     function saveFormData() {
         const formData = new FormData(form);
