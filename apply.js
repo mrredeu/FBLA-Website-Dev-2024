@@ -107,8 +107,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
     function populateJobQuestions(questions, container) {
         container.innerHTML = '';
-        questions.forEach(question => {
-            const questionElement = createQuestionElement(question);
+        questions.forEach((question, index) => {
+            const questionElement = createQuestionElement(question, index);
             container.appendChild(questionElement);
         });
     }
@@ -120,16 +120,23 @@ document.addEventListener("DOMContentLoaded", function() {
         const label = document.createElement('label');
         label.textContent = question;
     
+        // Create a hidden input to store the question label
+        const hiddenInput = document.createElement('input');
+        hiddenInput.setAttribute('type', 'hidden');
+        hiddenInput.setAttribute('name', `questionLabel${index}`);
+        hiddenInput.setAttribute('value', question);
+    
         const asterisk = document.createElement('span');
         asterisk.classList.add('asterisk');
         asterisk.textContent = '*';
         label.appendChild(asterisk);
     
         const textarea = document.createElement('textarea');
-        textarea.setAttribute('name', `dynamicQuestion[${index}]`);
+        textarea.setAttribute('name', `question${index}`);
         textarea.setAttribute('required', 'true');
         textarea.classList.add('form-control');
     
+        div.appendChild(hiddenInput);
         div.appendChild(label);
         div.appendChild(textarea);
         return div;

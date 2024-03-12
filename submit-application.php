@@ -58,18 +58,16 @@ $mailBody .= "Have you pleaded no contest to or been convicted of a felony withi
 if (!empty($softwareExperience)) $mailBody .= "Software Experience: $softwareExperience\n";
 if (!empty($certificatesAwards)) $mailBody .= "Certificates and Awards: $certificatesAwards\n";
 if (!empty($workSamples)) $mailBody .= "Work Samples: $workSamples\n";
-$mail->addAttachment($_FILES['resumeFile']['tmp_name'], $_FILES['resumeFile']['name']);
 
-
-// Iterate over $_POST to find and append dynamically generated question responses
-foreach ($_POST as $key => $value) {
-    if (strpos($key, 'question-') === 0 && !empty($value)) {  // Assuming you prefix JS questions with 'question-'
-        // Format the key to look nice in the email
-        $formattedKey = str_replace('-', ' ', substr($key, 9));
-        $formattedKey = ucwords($formattedKey);
-        $mailBody .= "$formattedKey: $value\n";
+for ($i = 0; $i < 5; $i++) {
+    if (isset($_POST["question$i"])) {
+        $questionLabel = $_POST["questionLabel$i"];
+        $answer = $_POST["question$i"];
+        $mailBody .= "$questionLabel: $answer\n";
     }
 }
+
+$mail->addAttachment($_FILES['resumeFile']['tmp_name'], $_FILES['resumeFile']['name']);
 
 $mail->Body = $mailBody;
 
