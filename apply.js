@@ -1,8 +1,11 @@
+// Event listener for DOM content loaded to handle job title and error messages display
 document.addEventListener("DOMContentLoaded", function() {
+    // Parsing URL parameters to retrieve job title and error message
     const params = new URLSearchParams(window.location.search);
     const jobTitle = params.get('job');
     const error = params.get('error');
 
+    // Display job title at the top of the form if it exists
     if (jobTitle) {
         const titleElement = document.createElement('h1');
         titleElement.textContent = `${decodeURIComponent(jobTitle)}`;
@@ -10,6 +13,7 @@ document.addEventListener("DOMContentLoaded", function() {
         document.querySelector('.container').insertBefore(titleElement, document.querySelector('.container').firstChild);
     }
 
+    // Display error message if the error parameter is 'email'
     if (error === 'email') {
         const errorMessage = document.createElement('div');
         errorMessage.className = 'error-message';
@@ -21,6 +25,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 
+// Another DOM content loaded event listener for job-specific question handling and form data persistence
 document.addEventListener("DOMContentLoaded", function() {
     const params = new URLSearchParams(window.location.search);
     const jobType = params.get('job');
@@ -105,6 +110,7 @@ document.addEventListener("DOMContentLoaded", function() {
         return JSON.parse(storedQuestions);
     }
 
+    // Populate job-specific questions dynamically
     function populateJobQuestions(questions, container) {
         container.innerHTML = '';
         questions.forEach((question, index) => {
@@ -113,6 +119,7 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
+    // Create individual job question form element
     function createQuestionElement(question, index) {
         const div = document.createElement('div');
         div.classList.add('form-group');
@@ -142,6 +149,7 @@ document.addEventListener("DOMContentLoaded", function() {
         return div;
     }    
 
+    // Save form data to local storage
     function saveFormData() {
         const formData = new FormData(form);
         formData.forEach((value, key) => localStorage.setItem(key, value));
@@ -178,6 +186,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
+    // Add interaction for dynamically adding education history sections
     function handleEducationHistory() {
         const addEducationButton = document.getElementById('addEducation');
         if (addEducationButton) {
@@ -185,7 +194,8 @@ document.addEventListener("DOMContentLoaded", function() {
             updateEducationSections();
         }
     }
-    
+
+    // Add individual education history section
     function addEducationSection() {
         const educationHistoryDiv = document.getElementById('educationHistory');
         const newEducationSection = document.createElement('div');
@@ -217,6 +227,7 @@ document.addEventListener("DOMContentLoaded", function() {
     
     document.getElementById('addEducation').addEventListener('click', addEducationSection);
     
+    // Update display for education history sections
     function updateEducationSections() {
         const educationHistoryDiv = document.getElementById('educationHistory');
         const educationSections = educationHistoryDiv.querySelectorAll('.education-section');
@@ -227,12 +238,13 @@ document.addEventListener("DOMContentLoaded", function() {
     }    
 });
 
+// Validation and submission handling for the application form
 document.getElementById('submitBtn').addEventListener('click', function(event) {
     event.preventDefault();
     let isValid = true;
     let requiredFields = document.querySelectorAll('.form-control[required]');
 
-    // Validation logic
+    // Validation logic to ensure all required fields are filled
     requiredFields.forEach(function(field) {
         if (field.value.trim() === '') {
             isValid = false;
