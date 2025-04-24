@@ -30,12 +30,12 @@ $mail->Host = "smtp.gmail.com";
 $mail->Port = 465;
 $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
 $mail->SMTPAuth = true;
-$mail->Username = "pashatestermails@gmail.com";
-$mail->Password = "zyvnuncmydpegrhf";
+$mail->Username = //Your Email
+$mail->Password = //Your App Password
 $mail->SMTPDebug = 0;
 
-$mail->setFrom('pashatestermails@gmail.com', 'NexaPulse Career');
-$mail->addAddress('pashatestermails@gmail.com', 'NexaPulse HR');
+$mail->setFrom(//Your Email, 'NexaPulse Career');
+$mail->addAddress(//Your Email, 'NexaPulse HR');
 
 $mail->Subject = "Application Form: " . $firstName . " " . $lastName;
 
